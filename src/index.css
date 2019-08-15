@@ -1,0 +1,55 @@
+body {
+    background-color: lightblue;
+    font-family: sans-serif;
+    color: #000;
+}
+
+.todo {
+    margin-left: 50px;
+}
+
+label {
+    font-size: 22px;
+}
+
+.create-task {
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.add-task {
+    border-radius: 1px;
+    outline: none;
+    margin-left: 15px;
+}
+
+.list-task {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrp-task {
+    display: flex;
+    align-items: center;
+}
+
+.del-task {
+    outline: none;
+    border-radius: 50%;
+    background-color: #C12929;
+    border: 1px solid #B13B3B;
+    transition: background-color .5s;
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+}
+
+.del-task:hover {
+    cursor: pointer;
+    background-color: #D97575;
+    border: 1px solid #D66464;
+}
+
+li {
+    margin: 10px 0px;
+}
