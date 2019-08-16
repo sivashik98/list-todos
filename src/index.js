@@ -3,36 +3,49 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-function GenerateTask() {
+function GenerateTask(props) {
+
+  const listTasks = props.tasks.map((task) => {
+    if (task) {
+      return (
+        <div className='wrp-task' key={task + Math.random()}>
+          <li>{task}</li>
+          <button className='del-task'>Удалить задачу</button>
+        </div>
+      );
+    }
+  });
+
   return (
     <div className='list-task'>
-
+      {listTasks}
     </div>
   );
 }
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.additionTask = this.additionTask.bind(this);
+    this.state = {
+      value: '',
+      tasks: [],
+    };
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value, });
+  }
 
   additionTask() {
-    const value = document.querySelector('.create-task').value;
-    const list = document.querySelector('.list-task');
-    const task = document.createElement('li');
-    const btnDelTask = document.createElement('button');
-    const wrpTask = document.createElement('div');
+    const task = this.state.value;
+    const cloneTasks = this.state.tasks.slice();
+    cloneTasks.push(task);
 
-    wrpTask.setAttribute('class', 'wrp-task');
-    btnDelTask.setAttribute('class', 'del-task');
-    btnDelTask.innerText = 'X';
-    task.innerText = value;
-
-    btnDelTask.addEventListener('click', function () {
-      this.parentElement.remove();
-    });
-
-    list.appendChild(wrpTask);
-    wrpTask.appendChild(task);
-    wrpTask.appendChild(btnDelTask);
+    this.setState({ tasks: cloneTasks, });
   }
 
   render() {
@@ -40,11 +53,11 @@ class App extends React.Component {
       <div className='todo'>
         <label>Создайте задачу:
           <br />
-          <input className='create-task' type="text"/>
-          <button className='add-task' onClick={() => this.additionTask()}>Добавить</button>
+          <input className='create-task' type="text" value={this.state.value} onChange={this.handleChange} />
+          <button className='add-task' onClick={this.additionTask}>Добавить</button>
           <hr />
         </label>
-        <GenerateTask />
+        <GenerateTask tasks={this.state.tasks} />
       </div>
     );
   }
@@ -57,6 +70,5 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
-
 
 
