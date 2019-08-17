@@ -1,33 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-
-function GenerateTask(props) {
-
-  const listTasks = props.tasks.map((task) => {
-    if (task) {
-      return (
-        <div className='wrp-task' key={task + Math.random()}>
-          <li>{task}</li>
-          <button className='del-task'>Удалить задачу</button>
-        </div>
-      );
-    }
-  });
-
-  return (
-    <div className='list-task'>
-      {listTasks}
-    </div>
-  );
-}
+import Task from './Task';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.deleteTask = this.deleteTask.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.additionTask = this.additionTask.bind(this);
     this.state = {
@@ -36,16 +17,23 @@ class App extends React.Component {
     };
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value, });
+  deleteTask(event) {
+    const target = event.target.previousElementSibling.innerHTML;
+    const tasks = this.state.tasks.filter((task) => task !== target);
+
+    this.setState({ tasks, });
+  }
+
+  handleChange({target: {value}}) {
+    this.setState({ value, });
   }
 
   additionTask() {
-    const task = this.state.value;
-    const cloneTasks = this.state.tasks.slice();
-    cloneTasks.push(task);
-
-    this.setState({ tasks: cloneTasks, });
+    if (this.state.value) {
+      if (!this.state.tasks.includes(this.state.value))  {
+        this.setState({ tasks: [...this.state.tasks, this.state.value], });
+      }
+    }
   }
 
   render() {
@@ -53,11 +41,11 @@ class App extends React.Component {
       <div className='todo'>
         <label>Создайте задачу:
           <br />
-          <input className='create-task' type="text" value={this.state.value} onChange={this.handleChange} />
-          <button className='add-task' onClick={this.additionTask}>Добавить</button>
+          <input className='todo__create-task' type="text" value={this.state.value} onChange={this.handleChange} />
+          <button className='todo__add-task' onClick={this.additionTask}>Добавить</button>
           <hr />
         </label>
-        <GenerateTask tasks={this.state.tasks} />
+        <Task tasks={this.state.tasks} delTask={this.deleteTask} />
       </div>
     );
   }
