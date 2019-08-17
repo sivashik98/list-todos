@@ -35,12 +35,10 @@ label {
 
 .del-task {
     outline: none;
-    border-radius: 50%;
+    border-radius: 2%;
     background-color: #C12929;
     border: 1px solid #B13B3B;
     transition: background-color .5s;
-    width: 25px;
-    height: 25px;
     margin-left: 15px;
 }
 
