@@ -12,28 +12,28 @@ label {
     font-size: 22px;
 }
 
-.create-task {
+.todo__create-task {
     margin-top: 20px;
     border-radius: 3px;
 }
 
-.add-task {
+.todo__add-task {
     border-radius: 1px;
     outline: none;
     margin-left: 15px;
 }
 
-.list-task {
+.todo__list-task {
     display: flex;
     flex-direction: column;
 }
 
-.wrp-task {
+.todo__wrp-task {
     display: flex;
     align-items: center;
 }
 
-.del-task {
+.todo__del-task {
     outline: none;
     border-radius: 2%;
     background-color: #C12929;
@@ -42,7 +42,7 @@ label {
     margin-left: 15px;
 }
 
-.del-task:hover {
+.todo__del-task:hover {
     cursor: pointer;
     background-color: #D97575;
     border: 1px solid #D66464;
