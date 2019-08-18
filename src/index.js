@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Task from './Task';
+
+import './index.css';
 
 
 class App extends React.Component {
@@ -17,9 +18,8 @@ class App extends React.Component {
     };
   }
 
-  deleteTask(event) {
-    const target = event.target.previousElementSibling.innerHTML;
-    const tasks = this.state.tasks.filter((task) => task !== target);
+  deleteTask({target: {value}}) {
+    const tasks = this.state.tasks.filter((task, i) => i !== Number(value));
 
     this.setState({ tasks, });
   }
@@ -29,10 +29,10 @@ class App extends React.Component {
   }
 
   additionTask() {
-    if (this.state.value) {
-      if (!this.state.tasks.includes(this.state.value))  {
-        this.setState({ tasks: [...this.state.tasks, this.state.value], });
-      }
+    const descTask = this.state.value;
+
+    if (descTask.length > 0) {
+      this.setState({ tasks: [...this.state.tasks, descTask], });
     }
   }
 
