@@ -1,20 +1,19 @@
 import React from 'react';
+import ListTasks from './ListTasks';
 
 function Task(props) {
 
-  const listTasks = props.tasks.map((task) => {
+  const list = props.tasks.map((task, i) => {
     return (
-      <div className='todo__wrp-task' key={task + Math.random()}>
+      <div className='todo__wrp-task' key={i}>
         <li>{task}</li>
-        <button className='todo__del-task' onClick={props.delTask} >Удалить задачу</button>
+        <button value={i} className='todo__del-task' onClick={props.delTask} >Удалить задачу</button>
       </div>
     );
   });
 
   return (
-    <div className='todo__list-task'>
-      {listTasks}
-    </div>
+    <ListTasks list={list} />
   );
 }
 
