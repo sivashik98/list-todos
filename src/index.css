@@ -9,6 +9,7 @@ body {
 }
 
 label {
+    user-select: none;
     font-size: 22px;
 }
 
@@ -18,9 +19,25 @@ label {
 }
 
 .todo__add-task {
-    border-radius: 1px;
     outline: none;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    width: 100px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: rgb(43, 153, 91);
+    border: 1px solid rgb(33, 126, 74);
     margin-left: 15px;
+    cursor: pointer;
+    transition: background-color .5s;
+}
+
+.todo__add-task:hover {
+    background-color: rgb(75, 183, 141);
 }
 
 .todo__list-task {
@@ -29,25 +46,56 @@ label {
 }
 
 .todo__wrp-task {
+    /*text-decoration: line-through;*/
+    /*opacity: 0.2;*/
     display: flex;
     align-items: center;
 }
 
-.todo__del-task {
+.todo__wrp-task .todo__del-task {
     outline: none;
-    border-radius: 2%;
-    background-color: #C12929;
-    border: 1px solid #B13B3B;
-    transition: background-color .5s;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    width: 150px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 4px 8px;
+    text-decoration: none;
+    background-color: rgb(153, 43, 43);
+    border: 1px solid rgb(126, 33, 33);
     margin-left: 15px;
+    cursor: pointer;
+    transition: background-color .5s;
 }
 
 .todo__del-task:hover {
-    cursor: pointer;
-    background-color: #D97575;
-    border: 1px solid #D66464;
+    background-color: rgb(183, 75, 75);
 }
 
 li {
-    margin: 10px 0px;
+    margin: 10px 0;
+}
+
+.todo__del-all-task {
+    outline: none;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    width: 150px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    padding: 4px 8px;
+    text-decoration: none;
+    background-color: rgb(153, 43, 43);
+    border: 1px solid rgb(126, 33, 33);
+    margin-left: 15px;
+    cursor: pointer;
+    transition: background-color .5s;
+}
+
+.todo__del-all-task:hover {
+    background-color: rgb(183, 75, 75);
 }
